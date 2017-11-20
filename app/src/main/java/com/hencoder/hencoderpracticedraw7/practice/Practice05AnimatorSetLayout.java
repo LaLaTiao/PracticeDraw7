@@ -48,6 +48,10 @@ public class Practice05AnimatorSetLayout extends RelativeLayout {
                 // 要求 1： animator1 先执行，animator2 在 animator1 完成后立即开始
                 // 要求 2： animator2 和 animator3 同时开始
 
+                //实际感觉,animator2是在animator3后面才执行的,按照1,2,3的顺序执行,发现会慢一点t
+//                animatorSet.playSequentially(animator1,animator2,animator3);
+                animatorSet.play(animator1).before(animator2);
+                animatorSet.playTogether(animator2,animator3);
                 animatorSet.start();
             }
         });
